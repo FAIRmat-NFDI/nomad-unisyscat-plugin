@@ -1,0 +1,26 @@
+{
+  "template": "https://github.com/FAIRmat-NFDI/cookiecutter-nomad-plugin",
+  "commit": "dbf41935075d9057d69478db6eb9e7901bb44992",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Pepe Marquez",
+      "email": "jose.marquez@physik.hu-berlin.de",
+      "github_username": "Pepe-Marquez",
+      "plugin_name": "unisyscat",
+      "module_name": "unisyscat",
+      "short_description": "A example plugin for a demonstration for UniSysCat.",
+      "version": "0.1.0",
+      "license": "Apache Software License 2.0",
+      "include_schema_package": true,
+      "include_normalizer": false,
+      "include_parser": true,
+      "include_app": true,
+      "_copy_without_render": [
+        "*.html"
+      ],
+      "_template": "https://github.com/FAIRmat-NFDI/cookiecutter-nomad-plugin"
+    }
+  },
+  "directory": null
+}
