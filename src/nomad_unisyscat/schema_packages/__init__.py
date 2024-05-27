@@ -7,7 +7,7 @@ class MySchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
     def load(self):
         from nomad_unisyscat.schema_packages.mypackage import m_package
- 
+
         return m_package
 
 
