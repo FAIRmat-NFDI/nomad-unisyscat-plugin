@@ -26,7 +26,6 @@ configuration = config.get_plugin_entry_point(
 
 m_package = SchemaPackage()
 
-
 class NVRSpectroscopy(Measurement, PlotSection, EntryData):
     measurements_data_file = Quantity(
         type=str,

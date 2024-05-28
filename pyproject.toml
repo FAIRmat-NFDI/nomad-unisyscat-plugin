@@ -110,6 +110,5 @@ where = ["src"]
 [project.entry-points.'nomad.plugin']
 myparser = "nomad_unisyscat.parsers:myparser"
 mypackage = "nomad_unisyscat.schema_packages:mypackage"
-unisyscatpackage = "nomad_unisyscat.schema_packages:unisyscatpackage"
 
 myapp = "nomad_unisyscat.apps:myapp"
