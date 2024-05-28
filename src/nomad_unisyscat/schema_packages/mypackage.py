@@ -12,9 +12,13 @@ if TYPE_CHECKING:
     )
 
 from nomad.config import config
-from nomad.datamodel.data import Schema
+from nomad.datamodel.data import Schema, EntryData
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.metainfo import Quantity, SchemaPackage
+from nomad.datamodel.metainfo.basesections import Measurement
+
+from nomad.datamodel.metainfo.plot import PlotSection, PlotlyFigure
+import plotly.express as px
 
 configuration = config.get_plugin_entry_point(
     'nomad_unisyscat.schema_packages:mypackage'

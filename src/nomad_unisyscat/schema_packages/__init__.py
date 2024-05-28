@@ -16,6 +16,7 @@ mypackage = MySchemaPackageEntryPoint(
     description='Schema package defined using the new plugin mechanism.',
 )
 
+
 class SpectroscopyEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
@@ -27,7 +28,7 @@ class SpectroscopyEntryPoint(SchemaPackageEntryPoint):
 
 unisyscatpackage = SpectroscopyEntryPoint(
     name='UniSysCat',
-    description='''
+    description="""
     Schema package for unisyscat example data defined using the new plugin mechanism.
-    ''',
+    """,
 )
