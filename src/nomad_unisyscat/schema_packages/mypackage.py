@@ -52,6 +52,7 @@ class NRVSResult(MeasurementResult):
         shape=['*'],
         unit='1/cm',
         description='The wavenumber range of the sprectrum',
+        a_eln=ELNAnnotation(defaultDisplayUnit='1/cm'),
         a_plot={'x': 'array_index', 'y': 'wavenumber'},
     )
 
@@ -62,7 +63,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             experimental tab data file
             """,
-        a_eln=dict(component='FileEditQuantity'),
+        a_eln=ELNAnnotation(component='FileEditQuantity'),
         a_browser=dict(adaptor='RawFileAdaptor'),
     )
 
@@ -80,7 +81,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
-        a_eln=dict(
+        a_eln=ELNAnnotation(
             component='StringEditQuantity',
             default='nuclear resonance vibrational spectroscopy',
             props=dict(
