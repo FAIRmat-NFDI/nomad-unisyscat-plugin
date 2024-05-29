@@ -105,7 +105,7 @@ class EPRResults(MeasurementResult):
         logger.info('EPRResults.normalize', parameter=configuration.parameter)
 
 
-class EPR(Measurement):
+class EPR(Measurement, Schema, PlotSection):
     method = Quantity(
         type=str,
         description='The method of the measurement.',
@@ -147,6 +147,134 @@ class EPR(Measurement):
             results = []
             results.append(result)
             self.results = results
+
+            settings = EPRSettings()
+            settings.metal_ions_defined = bool(
+                temp_dict['device_specific']['MetalIonsDef']
+            )
+            settings.organic_radicals_defined = bool(
+                temp_dict['device_specific']['OrgRadicalsDef']
+            )
+            settings.allegro_mode = bool(temp_dict['device_specific']['AllegroMode'])
+            settings.center_field = float(
+                temp_dict['device_specific']['CenterField'].split()[0]
+            )
+            settings.delay_time = float(
+                temp_dict['device_specific']['Delay'].split()[0]
+            )
+            settings.field_flyback = temp_dict['device_specific']['FieldFlyback']
+            settings.field_wait = temp_dict['device_specific']['FieldWait']
+            settings.g_factor = float(temp_dict['device_specific']['GFactor'])
+            settings.measuring_hall = bool(
+                temp_dict['device_specific']['MeasuringHall']
+            )
+            settings.set_to_sample_g = bool(
+                temp_dict['device_specific']['SetToSampleG']
+            )
+            settings.static_field_monitor = float(
+                temp_dict['device_specific']['StaticFieldMon'].split()[0]
+            )
+            settings.sweep_direction = temp_dict['device_specific']['SweepDirection']
+            settings.sweep_width = float(
+                temp_dict['device_specific']['SweepWidth'].split()[0]
+            )
+            settings.frequency_monitor = float(
+                temp_dict['device_specific']['FrequencyMon'].split()[0]
+            )
+            settings.q_monitor_bridge = bool(
+                temp_dict['device_specific']['QMonitBridge']
+            )
+            settings.acquisition_fine_tuning = temp_dict['device_specific'][
+                'AcqFineTuning'
+            ]
+            settings.acquisition_scan_fine_tuning = temp_dict['device_specific'][
+                'AcqScanFTuning'
+            ]
+            settings.acquisition_slice_fine_tuning = temp_dict['device_specific'][
+                'AcqSliceFTuning'
+            ]
+            settings.bridge_calibration = float(
+                temp_dict['device_specific']['BridgeCalib']
+            )
+            settings.power_level = float(
+                temp_dict['device_specific']['Power'].split()[0]
+            )
+            settings.power_attenuation = float(
+                temp_dict['device_specific']['PowerAtten'].split()[0]
+            )
+            settings.q_value = int(temp_dict['device_specific']['QValue'])
+            settings.baseline_correction = bool(
+                temp_dict['device_specific']['BaselineCorr']
+            )
+            settings.number_of_scans_accumulated = int(
+                temp_dict['device_specific']['NbScansAcc']
+            )
+            settings.number_of_scans_done = int(
+                temp_dict['device_specific']['NbScansDone']
+            )
+            settings.number_of_scans_to_do = int(
+                temp_dict['device_specific']['NbScansToDo']
+            )
+            settings.replace_mode = temp_dict['device_specific']['ReplaceMode']
+            settings.smoothing_mode = temp_dict['device_specific']['SmoothMode']
+            settings.smoothing_points = int(
+                temp_dict['device_specific']['SmoothPoints']
+            )
+            settings.afc_trap = bool(temp_dict['device_specific']['AFCTrap'])
+            settings.allow_short_circuit = bool(
+                temp_dict['device_specific']['AllowShortCt']
+            )
+            settings.calibrated = bool(temp_dict['device_specific']['Calibrated'])
+            settings.conversion_time = float(
+                temp_dict['device_specific']['ConvTime'].split()[0]
+            )
+            settings.demodulation_detection_sct = temp_dict['device_specific'][
+                'DModDetectSCT'
+            ]
+            settings.dual_detection = temp_dict['device_specific']['DualDetect']
+            settings.eliptical_delay = float(
+                temp_dict['device_specific']['EliDelay'].split()[0]
+            )
+            settings.enable_imaginary = temp_dict['device_specific']['EnableImag']
+            settings.external_lock_in = bool(temp_dict['device_specific']['ExtLockIn'])
+            settings.external_trigger = bool(temp_dict['device_specific']['ExtTrigger'])
+            settings.gain_level = float(temp_dict['device_specific']['Gain'].split()[0])
+            settings.harmonic_level = int(temp_dict['device_specific']['Harmonic'])
+            settings.high_pass_filter = bool(temp_dict['device_specific']['HighPass'])
+            settings.integrator_enabled = bool(
+                temp_dict['device_specific']['Integrator']
+            )
+            settings.is_calibrated_experiment = bool(
+                temp_dict['device_specific']['IsCalibExp']
+            )
+            settings.modulation_amplitude = float(
+                temp_dict['device_specific']['ModAmp'].split()[0]
+            )
+            settings.modulation_frequency = float(
+                temp_dict['device_specific']['ModFreq'].split()[0]
+            )
+            settings.modulation_phase = float(temp_dict['device_specific']['ModPhase'])
+            settings.modulation_resolution = int(
+                temp_dict['device_specific']['ModResol']
+            )
+            settings.offset_percentage = float(
+                temp_dict['device_specific']['Offset'].split()[0]
+            )
+            settings.quad_mode = bool(temp_dict['device_specific']['QuadMode'])
+            settings.resolution_value = int(temp_dict['device_specific']['Resolution'])
+            settings.resonator_number = int(temp_dict['device_specific']['Resonator'])
+            settings.sct_normalization = bool(temp_dict['device_specific']['SctNorm'])
+            settings.sct_revision = temp_dict['device_specific']['SctRevision']
+            settings.spu_extension = bool(temp_dict['device_specific']['SpuExtension'])
+            settings.sweep_time = float(
+                temp_dict['device_specific']['SweepTime'].split()[0]
+            )
+            settings.time_constant = float(
+                temp_dict['device_specific']['TimeConst'].split()[0]
+            )
+            settings.time_exponential = bool(temp_dict['device_specific']['TimeExp'])
+            settings.tuning_capacitance = int(temp_dict['device_specific']['TuneCaps'])
+            self.settings = settings
 
             self.figures = []
 
