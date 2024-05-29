@@ -50,7 +50,7 @@ def generate_xdata_from_params(param_dict):
     xmin = float(param_dict['XMIN'])
     xwid = float(param_dict['XWID'])
 
-    xmax = xmin + xwid
+    xmin + xwid
     xsampling = xwid / xpoints
 
     xdata = [xmin + (xsampling * i) for i in range(xpoints)]
@@ -58,7 +58,7 @@ def generate_xdata_from_params(param_dict):
 
 
 def read_dsc_file(file_path):
-    with open(file_path, 'r') as file:
+    with open(file_path) as file:
         dsc_contents = file.read()
     return dsc_contents
 
@@ -122,16 +122,3 @@ def parse_dta_dsc(dta_file, dsc_file):
     }
 
     return merged_data
-
-
-# dta_file_path = '/home/pepe_marquez/NOMAD/nomad/plugins/nomad-unisyscat-plugin/tests/data/ReRH_Nia-C_H_EPR_exp_raw.DTA'
-# dsc_file_path = '/mnt/data/ReRH_Nia-C_H_EPR_exp_raw.DSC'
-
-# merged_data = parse_dta_dsc(dta_file_path, dsc_file_path)
-
-# print(merged_data)
-
-# # Save the merged data into a JSON file
-# final_json_file_path = '/mnt/data/ReRH_Nia-C_H_EPR_exp_full_merged.json'
-# with open(final_json_file_path, 'w') as json_file:
-#     json.dump(merged_data, json_file)
