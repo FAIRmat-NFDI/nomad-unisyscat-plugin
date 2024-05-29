@@ -133,7 +133,7 @@ class EPR(Measurement, Schema, PlotSection):
     results = Measurement.results.m_copy()
     results.section_def = EPRResults
 
-    def normalize(self, archive, logger) -> None:
+    def normalize(self, archive, logger) -> None:  # noqa: PLR0915
         super().normalize(archive, logger)
         if self.dsc_file is not None and self.dta_file is not None:
             from .epr_reader import parse_dta_dsc
