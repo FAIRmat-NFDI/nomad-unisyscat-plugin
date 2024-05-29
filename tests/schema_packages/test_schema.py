@@ -3,9 +3,9 @@ import os.path
 from nomad.client import normalize_all, parse
 
 
-def test_schema():
-    test_file = os.path.join('tests', 'data', 'test.archive.yaml')
+def test_ir_schema():
+    test_file = os.path.join('tests', 'data', 'ir_test.archive.yaml')
     entry_archive = parse(test_file)[0]
     normalize_all(entry_archive)
 
-    assert entry_archive.data.message == 'Hello Markus!'
+    assert entry_archive.data.results[0].wavenumber is not None
