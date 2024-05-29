@@ -1,0 +1,4 @@
+data:
+  m_def: nomad_unisyscat.schema_packages.mypackage.EPR
+  dsc_file: ReRH_Nia-C_H_EPR_exp_raw.DSC
+  dta_file: ReRH_Nia-C_H_EPR_exp_raw.DTA

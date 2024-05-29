@@ -4,13 +4,14 @@ from typing import (
 )
 
 import numpy as np
+from nomad.metainfo.metainfo import SubSection
 
 if TYPE_CHECKING:
     pass
 
 import plotly.express as px
 from nomad.config import config
-from nomad.datamodel.data import Schema
+from nomad.datamodel.data import ArchiveSection, Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.datamodel.metainfo.basesections import Measurement, MeasurementResult
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
@@ -21,6 +22,140 @@ configuration = config.get_plugin_entry_point(
 )
 
 m_package = SchemaPackage()
+
+
+class EPRSettings(ArchiveSection):
+    metal_ions_defined = Quantity(type=bool)
+    organic_radicals_defined = Quantity(type=bool)
+    allegro_mode = Quantity(type=bool)
+    center_field = Quantity(type=float, unit='G')
+    delay_time = Quantity(type=float, unit='s')
+    field_flyback = Quantity(type=str)
+    field_wait = Quantity(type=str)
+    g_factor = Quantity(type=float)
+    measuring_hall = Quantity(type=bool)
+    set_to_sample_g = Quantity(type=bool)
+    static_field_monitor = Quantity(type=float, unit='G')
+    sweep_direction = Quantity(type=str)
+    sweep_width = Quantity(type=float, unit='G')
+    frequency_monitor = Quantity(type=float, unit='GHz')
+    q_monitor_bridge = Quantity(type=bool)
+    acquisition_fine_tuning = Quantity(type=str)
+    acquisition_scan_fine_tuning = Quantity(type=str)
+    acquisition_slice_fine_tuning = Quantity(type=str)
+    bridge_calibration = Quantity(type=float)
+    power_level = Quantity(type=float, unit='mW')
+    power_attenuation = Quantity(type=float, unit='dB')
+    q_value = Quantity(type=int)
+    baseline_correction = Quantity(type=bool)
+    number_of_scans_accumulated = Quantity(type=int)
+    number_of_scans_done = Quantity(type=int)
+    number_of_scans_to_do = Quantity(type=int)
+    replace_mode = Quantity(type=str)
+    smoothing_mode = Quantity(type=str)
+    smoothing_points = Quantity(type=int)
+    afc_trap = Quantity(type=bool)
+    allow_short_circuit = Quantity(type=bool)
+    calibrated = Quantity(type=bool)
+    conversion_time = Quantity(type=float, unit='ms')
+    demodulation_detection_sct = Quantity(type=str)
+    dual_detection = Quantity(type=str)
+    eliptical_delay = Quantity(type=float, unit='us')
+    enable_imaginary = Quantity(type=str)
+    external_lock_in = Quantity(type=bool)
+    external_trigger = Quantity(type=bool)
+    gain_level = Quantity(type=float, unit='dB')
+    harmonic_level = Quantity(type=int)
+    high_pass_filter = Quantity(type=bool)
+    integrator_enabled = Quantity(type=bool)
+    is_calibrated_experiment = Quantity(type=bool)
+    modulation_amplitude = Quantity(type=float, unit='G')
+    modulation_frequency = Quantity(type=float, unit='kHz')
+    modulation_phase = Quantity(type=float)
+    modulation_resolution = Quantity(type=int)
+    offset_percentage = Quantity(type=float)
+    quad_mode = Quantity(type=bool)
+    resolution_value = Quantity(type=int)
+    resonator_number = Quantity(type=int)
+    sct_normalization = Quantity(type=bool)
+    sct_revision = Quantity(type=str)
+    spu_extension = Quantity(type=bool)
+    sweep_time = Quantity(type=float, unit='s')
+    time_constant = Quantity(type=float, unit='ms')
+    time_exponential = Quantity(type=bool)
+    tuning_capacitance = Quantity(type=int)
+
+    def normalize(self, archive, logger) -> None:
+        super().normalize(archive, logger)
+
+        logger.info('Settings.normalize', parameter=configuration.parameter)
+
+
+class EPRResults(MeasurementResult):
+    field = Quantity(type=float, shape=['*'], unit='G')
+    frequency = Quantity(type=float, unit='GHz')
+    intensity = Quantity(type=float, shape=['*'])
+    signal = Quantity(type=float)
+    signal_error = Quantity(type=float)
+    time = Quantity(type=float, unit='s')
+
+    def normalize(self, archive, logger) -> None:
+        super().normalize(archive, logger)
+
+        logger.info('EPRResults.normalize', parameter=configuration.parameter)
+
+
+class EPR(Measurement):
+    method = Quantity(
+        type=str,
+        description='The method of the measurement.',
+        default='Electron paramagnetic resonance (EPR)',
+    )
+
+    dsc_file = Quantity(
+        type=str,
+        description='The path to the DSC file.',
+        shape=[],
+        a_eln=dict(component='FileEditQuantity'),
+    )
+    dta_file = Quantity(
+        type=str,
+        description='The path to the DTA file.',
+        shape=[],
+        a_eln=dict(component='FileEditQuantity'),
+    )
+    settings = SubSection(
+        section_def=EPRSettings,
+        description="""
+        The settings used for the EPR measurement.
+        """,
+    )
+    results = Measurement.results.m_copy()
+    results.section_def = EPRResults
+
+    def normalize(self, archive, logger) -> None:
+        super().normalize(archive, logger)
+        if self.dsc_file is not None and self.dta_file is not None:
+            from .epr_reader import parse_dta_dsc
+
+            with archive.m_context.raw_file(self.dsc_file) as f:
+                with archive.m_context.raw_file(self.dta_file) as g:
+                    temp_dict = parse_dta_dsc(g.name, f.name)
+            result = EPRResults()
+            result.intensity = temp_dict['y_values']
+            result.field = temp_dict['x_values']
+            results = []
+            results.append(result)
+            self.results = results
+
+            self.figures = []
+
+            fig = px.line(x=temp_dict['x_values'], y=temp_dict['y_values'])
+            fig.update_xaxes(title_text='Field (G)')
+            fig.update_yaxes(title_text='Intensity')
+            self.figures.append(PlotlyFigure(label='EPR', figure=fig.to_plotly_json()))
+
+        logger.info('EPR.normalize', parameter=configuration.parameter)
 
 
 class NRVSResult(MeasurementResult):
