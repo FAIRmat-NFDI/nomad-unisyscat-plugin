@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 
 import plotly.express as px
 from nomad.config import config
-from nomad.datamodel.data import EntryData, Schema
+from nomad.datamodel.data import Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.datamodel.metainfo.basesections import Measurement, MeasurementResult
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
@@ -56,7 +56,7 @@ class NRVSResult(MeasurementResult):
     )
 
 
-class NRVSpectroscopy(Measurement, PlotSection, EntryData):
+class NRVSpectroscopy(Measurement, PlotSection, Schema):
     measurement_data_file = Quantity(
         type=str,
         description="""
@@ -121,19 +121,5 @@ class NRVSpectroscopy(Measurement, PlotSection, EntryData):
         fig.update_xaxes(title_text=col_names[0])
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
-
-
-class MySchema(Schema):
-    name = Quantity(
-        type=str, a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity)
-    )
-    message = Quantity(type=str)
-
-    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
-        super().normalize(archive, logger)
-
-        logger.info('MySchema.normalize', parameter=configuration.parameter)
-        self.message = f'Hello {self.name}!'
-
 
 m_package.__init_metainfo__()
