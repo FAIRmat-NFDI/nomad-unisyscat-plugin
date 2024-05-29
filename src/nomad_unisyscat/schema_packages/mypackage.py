@@ -116,7 +116,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
 
         self.figures = []
 
-        fig = px.line(x=self.results.wavenumber, y=self.results.intensity)
+        fig = px.line(x=data['wavenumber, cm-1'], y=data['57Fe PVDOS'])
         fig.update_xaxes(title_text=col_names[0])
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
@@ -197,6 +197,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
 
                 col_names = ['wavenumber, cm-1', 'Absorbance']
                 data = pd.read_csv(f.name, header=None, names=col_names)
+
         result = IRResult()
         result.wavenumber = data['wavenumber, cm-1']
         result.intensity = data['Absorbance']
@@ -206,7 +207,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
 
         self.figures = []
 
-        fig = px.line(x=data['wavenumber, cm-1'], y=data['57Fe PVDOS'])
+        fig = px.line(x=data['wavenumber, cm-1'], y=data['Absorbance'])
         fig.update_xaxes(title_text=col_names[0])
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='IR', figure=fig.to_plotly_json()))

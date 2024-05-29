@@ -2,7 +2,7 @@
   "data": {
     "m_def": "nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy",
     "name": "nrvs test",
-    "datetime": "2024-05-29T13:52:14.690498+00:00",
+    "datetime": "2024-05-29T14:47:35.680156+00:00",
     "measurement_data_file": "ReRH_Nia-C_H_NRVS_exp.dat",
     "results": [
       {
@@ -2360,9 +2360,9 @@
     "entry_type": "NRVSpectroscopy",
     "mainfile": "/workspaces/nomad-unisyscat-plugin/tests/data/nrvs_test.archive.yaml",
     "text_search_contents": [
+      "ReRH_Nia-C_H_NRVS_exp.dat",
       "NRVS",
-      "nrvs test",
-      "ReRH_Nia-C_H_NRVS_exp.dat"
+      "nrvs test"
     ],
     "n_quantities": 22,
     "quantities": [
@@ -2527,7 +2527,7 @@
         "id": "data.datetime#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy",
         "definition": "nomad.datamodel.metainfo.basesections.Activity.datetime",
         "path_archive": "data.datetime",
-        "datetime_value": "2024-05-29T13:52:14.690498+00:00"
+        "datetime_value": "2024-05-29T14:47:35.680156+00:00"
       }
     ]
   },
