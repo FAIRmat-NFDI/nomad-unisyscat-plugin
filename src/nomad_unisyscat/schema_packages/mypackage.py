@@ -6,17 +6,12 @@ from typing import (
 import numpy as np
 
 if TYPE_CHECKING:
-    from nomad.datamodel.datamodel import (
-        EntryArchive,
-    )
-    from structlog.stdlib import (
-        BoundLogger,
-    )
+    pass
 
 import plotly.express as px
 from nomad.config import config
 from nomad.datamodel.data import Schema
-from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.datamodel.metainfo.basesections import Measurement, MeasurementResult
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Quantity, SchemaPackage, Section
@@ -112,9 +107,12 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
 
                 col_names = ['wavenumber, cm-1', '57Fe PVDOS']
                 data = pd.read_csv(f.name, header=None, names=col_names)
-
-        self.results.wavenumber = data['wavenumber, cm-1']
-        self.results.intensity = data['57Fe PVDOS']
+        result = NRVSResult()
+        result.wavenumber = data['wavenumber, cm-1']
+        result.intensity = data['57Fe PVDOS']
+        results = []
+        results.append(result)
+        self.results = results
 
         self.figures = []
 
@@ -122,5 +120,6 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         fig.update_xaxes(title_text=col_names[0])
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
+
 
 m_package.__init_metainfo__()
