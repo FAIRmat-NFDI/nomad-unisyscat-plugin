@@ -3,22 +3,30 @@ from nomad.config.models.ui import App, Column, Columns, FilterMenu, FilterMenus
 
 
 myapp = AppEntryPoint(
-    name='MyApp',
-    description='App defined using the new plugin mechanism.',
+    name='UniSysCatApp',
+    description='Explore UniSysCat example data.',
     app=App(
-        label='MyApp',
-        path='myapp',
-        category='simulation',
+        label='UniSysCatApp',
+        path='unisyscatapp',
+        category='Use Cases',
         columns=Columns(
-            selected=['entry_id'],
+            selected=[
+                'entry_id',
+                'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy'
+            ],
             options={
                 'entry_id': Column(),
+                'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy': Column()
             },
         ),
+
         filter_menus=FilterMenus(
             options={
                 'material': FilterMenu(label='Material'),
             }
+        ),
+        filters=Filters(
+            include=['*#nomad_unisyscat.schema_packages.mypackage'],
         ),
     ),
 )
