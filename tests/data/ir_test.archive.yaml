@@ -1,0 +1,3 @@
+data:
+  m_def: nomad_unisyscat.schema_packages.mypackage.IRSpectroscopy
+  measurement_data_file: ReRH_Nia-C_H_IR_exp.dat
