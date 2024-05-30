@@ -14,9 +14,10 @@ from nomad.config import config
 from nomad.datamodel.data import ArchiveSection, Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.datamodel.metainfo.basesections import (
+    CompositeSystemReference,
     Measurement,
     MeasurementResult,
-    CompositeSystemReference)
+    )
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Quantity, SchemaPackage, Section
 
