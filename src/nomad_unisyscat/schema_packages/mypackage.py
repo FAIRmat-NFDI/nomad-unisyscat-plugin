@@ -382,11 +382,13 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
 
         if self.measurement_data_file.endswith('_NRVS_exp.dat'):
             sample_name = self.measurement_data_file.split('_NRVS')
-            sample = CompositeSystemReference()
-            sample.name = sample_name[0]
-            samples=[]
-            samples.append(sample)
-            self.samples = samples
+            if self.samples is None or self.samples == []:
+                sample = CompositeSystemReference()
+                sample.name = sample_name[0]
+                sample.lab_id = sample_name[0]
+                samples=[]
+                samples.append(sample)
+                self.samples = samples
 
 class IRResult(MeasurementResult):
     m_def = Section()
