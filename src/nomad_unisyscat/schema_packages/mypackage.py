@@ -325,14 +325,6 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         a_browser=dict(adaptor='RawFileAdaptor'),
     )
 
-    # simulation_data_file = Quantity(
-    #     type=str,
-    #     description="""
-    #         simulated tab data file
-    #         """,
-    #     a_eln=dict(component='FileEditQuantity'),
-    #     a_browser=dict(adaptor='RawFileAdaptor')
-    # )
 
     method = Quantity(
         type=str,
@@ -384,6 +376,13 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
 
+        if self.measurement_data_file.endswith('_NRVS_exp.dat'):
+            sample_name = self.measurement_data_file.split('_NRVS')
+            sample = CompositeSystemReference()
+            sample.name = sample_name[0]
+            samples=[]
+            samples.append(sample)
+            self.samples = samples
 
 class IRResult(MeasurementResult):
     m_def = Section()
