@@ -337,7 +337,6 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
             """,
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
-            default='nuclear resonance vibrational spectroscopy',
             props=dict(
                 suggestions=[
                     'experimental nuclear resonance vibrational spectroscopy',
