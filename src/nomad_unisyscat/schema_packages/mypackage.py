@@ -385,6 +385,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 sample = CompositeSystemReference()
                 sample.name = sample_name[0]
                 sample.lab_id = sample_name[0]
+                sample.normalize(archive, logger)
                 samples=[]
                 samples.append(sample)
                 self.samples = samples
