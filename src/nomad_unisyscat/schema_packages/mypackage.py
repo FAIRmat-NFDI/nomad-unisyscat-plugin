@@ -379,7 +379,8 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
 
         if self.measurement_data_file.endswith('_NRVS_exp.dat'):
-            sample_name = self.measurement_data_file.split('_NRVS')
+            file_name = str(self.measurement_data_file)
+            sample_name = file_name.split('_NRVS')
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
                 sample.name = sample_name[0]
@@ -474,17 +475,18 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
         results.append(result)
         self.results = results
 
-        if self.measurement_data_file.endswith('_IR_exp.dat'):
-            sample_name = self.measurement_data_file.split('_IR')
+        if self.data_file.endswith('_IR_exp.dat'):
+            sample_name = self.data_file.split('_IR')[0]
+            self.method = 'experimental IR vibrational spectroscopy'
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
-                sample.name = sample_name[0]
-                sample.lab_id = sample_name[0]
+                sample.name = sample_name
+                sample.lab_id = sample_name
                 sample.normalize(archive, logger)
                 samples = []
                 samples.append(sample)
                 self.samples = samples
-            self.method = 'experimental IR vibrational spectroscopy'
+
 
         self.figures = []
 
