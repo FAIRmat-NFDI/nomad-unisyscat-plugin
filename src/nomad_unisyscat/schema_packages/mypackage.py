@@ -17,7 +17,7 @@ from nomad.datamodel.metainfo.basesections import (
     CompositeSystemReference,
     Measurement,
     MeasurementResult,
-    )
+)
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Quantity, SchemaPackage, Section
 
@@ -329,7 +329,6 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         a_browser=dict(adaptor='RawFileAdaptor'),
     )
 
-
     method = Quantity(
         type=str,
         description="""
@@ -386,9 +385,11 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 sample.name = sample_name[0]
                 sample.lab_id = sample_name[0]
                 sample.normalize(archive, logger)
-                samples=[]
+                samples = []
                 samples.append(sample)
                 self.samples = samples
+            self.method = 'experimental nuclear resonance vibrational spectroscopy'
+
 
 class IRResult(MeasurementResult):
     m_def = Section()
@@ -472,6 +473,18 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
         results = []
         results.append(result)
         self.results = results
+
+        if self.measurement_data_file.endswith('_IR_exp.dat'):
+            sample_name = self.measurement_data_file.split('_IR')
+            if self.samples is None or self.samples == []:
+                sample = CompositeSystemReference()
+                sample.name = sample_name[0]
+                sample.lab_id = sample_name[0]
+                sample.normalize(archive, logger)
+                samples = []
+                samples.append(sample)
+                self.samples = samples
+            self.method = 'experimental IR vibrational spectroscopy'
 
         self.figures = []
 
