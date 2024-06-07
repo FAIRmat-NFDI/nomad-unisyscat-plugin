@@ -10,6 +10,12 @@ def test_ir_schema():
 
     assert entry_archive.data.results[0].wavenumber is not None
 
+def test_nrvs_schema():
+    test_file = os.path.join('tests', 'data', 'nrvs_test.archive.yaml')
+    entry_archive = parse(test_file)[0]
+    normalize_all(entry_archive)
+
+    assert entry_archive.data.results[0].wavenumber is not None
 
 def test_epr_schema():
     test_file = os.path.join('tests', 'data', 'epr_test.archive.yaml')

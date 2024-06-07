@@ -13,7 +13,12 @@ import plotly.express as px
 from nomad.config import config
 from nomad.datamodel.data import ArchiveSection, Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
-from nomad.datamodel.metainfo.basesections import Measurement, MeasurementResult
+from nomad.datamodel.metainfo.basesections import (
+    CompositeSystemReference,
+    InstrumentReference,
+    Measurement,
+    MeasurementResult,
+)
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Quantity, SchemaPackage, Section
 
@@ -276,6 +281,33 @@ class EPR(Measurement, Schema, PlotSection):
             settings.tuning_capacitance = int(temp_dict['device_specific']['TuneCaps'])
             self.settings = settings
 
+            if self.dsc_file.endswith('_EPR_exp_raw.DSC'):
+                sample_name = self.dsc_file.split('_EPR')[0]
+            self.method = 'experimental EPR spectroscopy'
+            if self.samples is None or self.samples == []:
+                sample = CompositeSystemReference()
+                sample.name = sample_name
+                sample.lab_id = sample_name
+                from nomad.datamodel.context import ClientContext
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    sample.normalize(archive, logger)
+                samples = []
+                samples.append(sample)
+                self.samples = samples
+            if self.instruments is None or self.instruments == []:
+                instrument = InstrumentReference()
+                instrument.name = 'EPR spectrometer'
+                instrument.lab_id = 'EPR-spectrometer'
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    instrument.normalize(archive, logger)
+                instruments = []
+                instruments.append(instrument)
+                self.instruments = instruments
+
             self.figures = []
 
             fig = px.line(x=temp_dict['x_values'], y=temp_dict['y_values'])
@@ -325,15 +357,6 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         a_browser=dict(adaptor='RawFileAdaptor'),
     )
 
-    # simulation_data_file = Quantity(
-    #     type=str,
-    #     description="""
-    #         simulated tab data file
-    #         """,
-    #     a_eln=dict(component='FileEditQuantity'),
-    #     a_browser=dict(adaptor='RawFileAdaptor')
-    # )
-
     method = Quantity(
         type=str,
         description="""
@@ -341,7 +364,6 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
             """,
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
-            default='nuclear resonance vibrational spectroscopy',
             props=dict(
                 suggestions=[
                     'experimental nuclear resonance vibrational spectroscopy',
@@ -383,6 +405,31 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         fig.update_xaxes(title_text=col_names[0])
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
+
+        if self.measurement_data_file.endswith('_NRVS_exp.dat'):
+            file_name = str(self.measurement_data_file)
+            sample_name = file_name.split('_NRVS')
+            if self.samples is None or self.samples == []:
+                sample = CompositeSystemReference()
+                sample.name = sample_name[0]
+                sample.lab_id = sample_name[0]
+                from nomad.datamodel.context import ClientContext
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    sample.normalize(archive, logger)
+                samples = []
+                samples.append(sample)
+                self.samples = samples
+            self.method = 'experimental nuclear resonance vibrational spectroscopy'
+            if self.instrument is None or self.instrument == []:
+                instrument = InstrumentReference()
+                instrument.name = 'NRVS setup'
+                instrument.lab_id = 'NRVS-setup'
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    instrument.normalize(archive, logger)
 
 
 class IRResult(MeasurementResult):
@@ -467,6 +514,33 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
         results = []
         results.append(result)
         self.results = results
+
+        if self.data_file.endswith('_IR_exp.dat'):
+            sample_name = self.data_file.split('_IR')[0]
+            self.method = 'experimental IR vibrational spectroscopy'
+            if self.samples is None or self.samples == []:
+                sample = CompositeSystemReference()
+                sample.name = sample_name
+                sample.lab_id = sample_name
+                from nomad.datamodel.context import ClientContext
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    sample.normalize(archive, logger)
+                samples = []
+                samples.append(sample)
+                self.samples = samples
+            if self.instruments is None or self.instruments == []:
+                instrument = InstrumentReference()
+                instrument.name = 'FT-IR spectrometer'
+                instrument.lab_id = 'FT-IR-spectrometer'
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    instrument.normalize(archive, logger)
+                instruments = []
+                instruments.append(instrument)
+                self.instruments = instruments
 
         self.figures = []
 
