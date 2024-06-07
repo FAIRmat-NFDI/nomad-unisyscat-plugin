@@ -423,7 +423,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 samples.append(sample)
                 self.samples = samples
             self.method = 'experimental nuclear resonance vibrational spectroscopy'
-            if self.instrument is None or self.instrument == []:
+            if self.instruments is None or self.instruments == []:
                 instrument = InstrumentReference()
                 instrument.name = 'NRVS setup'
                 instrument.lab_id = 'NRVS-setup'
@@ -432,6 +432,9 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                     pass
                 else:
                     instrument.normalize(archive, logger)
+                instruments = []
+                instruments.append(instrument)
+                self.instruments = instruments
 
 
 class IRResult(MeasurementResult):
