@@ -18,11 +18,11 @@ myapp = AppEntryPoint(
         columns=Columns(
             selected=[
                 'entry_id',
-                'data.method#nomad_unisyscat.schema_packages.mypackage'
+                'data.method#nomad_unisyscat.schema_packages.mypackage: NRVSpectroscopy'
             ],
             options={
                 'entry_id': Column(),
-                'data.method#nomad_unisyscat.schema_packages.mypackage': Column()
+                'data.method#nomad_unisyscat.schema_packages.mypackage:NRVSpectroscopy': Column()
             },
         ),
 
@@ -39,7 +39,7 @@ myapp = AppEntryPoint(
                 {
                     'type': 'terms',
                     'scale': 'linear',
-                    'quantity': 'data.method#nomad_unisyscat.schema_packages.mypackage',
+                    'quantity': 'data.method#nomad_unisyscat.schema_packages.mypackage:NRVSpectroscopy',
                     'layout': {
                         'xxl': {
                             'minH': 3,
