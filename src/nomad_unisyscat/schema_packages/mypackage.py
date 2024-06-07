@@ -300,6 +300,7 @@ class EPR(Measurement, Schema, PlotSection):
                 instrument = InstrumentReference()
                 instrument.name = 'EPR spectrometer'
                 instrument.lab_id = 'EPR-spectrometer'
+                from nomad.datamodel.context import ClientContext
                 if isinstance(archive.m_context, ClientContext):
                     pass
                 else:
@@ -426,6 +427,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 instrument = InstrumentReference()
                 instrument.name = 'NRVS setup'
                 instrument.lab_id = 'NRVS-setup'
+                from nomad.datamodel.context import ClientContext
                 if isinstance(archive.m_context, ClientContext):
                     pass
                 else:
@@ -534,6 +536,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
                 instrument = InstrumentReference()
                 instrument.name = 'FT-IR spectrometer'
                 instrument.lab_id = 'FT-IR-spectrometer'
+                from nomad.datamodel.context import ClientContext
                 if isinstance(archive.m_context, ClientContext):
                     pass
                 else:
