@@ -24,13 +24,12 @@ myapp = AppEntryPoint(
             options={
                 'entry_name': Column(),
                 'entry_id': Column(),
-                'results.eln.lab_ids': Column,
-                'results.eln.methods': Column,
+                'results.eln.lab_ids': Column(),
+                'results.eln.methods': Column(),
                 'data.name#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy':
                     Column(),
                 'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy':
                     Column(),
-                
             },
         ),
 
