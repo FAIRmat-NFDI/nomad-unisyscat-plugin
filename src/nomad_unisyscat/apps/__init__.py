@@ -50,8 +50,9 @@ myapp = AppEntryPoint(
                 {
                     'type': 'terms',
                     'scale': 'linear',
-                    'quantity': 'data.method#nomad_unisyscat.schema_packages.mypackage.'
-                        'NRVSpectroscopy',
+                    'quantity': 'data.method#'
+                        'nomad_unisyscat.schema_packages.mypackage.*',
+                        # 'NRVSpectroscopy',
                     'layout': {
                         'xxl': {
                             'minH': 3,
