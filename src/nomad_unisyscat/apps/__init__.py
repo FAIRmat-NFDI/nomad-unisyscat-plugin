@@ -17,22 +17,30 @@ myapp = AppEntryPoint(
         category='Use Cases',
         columns=Columns(
             selected=[
-                'entry_id',
+                'entry_name',
                 'data.name#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy',
                 'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy'
             ],
             options={
+                'entry_name': Column(),
                 'entry_id': Column(),
+                'results.eln.lab_ids': Column,
+                'results.eln.methods': Column,
                 'data.name#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy':
                     Column(),
                 'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy':
                     Column(),
+                
             },
         ),
 
         filter_menus=FilterMenus(
             options={
                 'material': FilterMenu(label='Material'),
+                'eln': FilterMenu(label='Electronic Lab Notebook'),
+                'custom_quantities': FilterMenu(label='User Defined Quantities'),
+                'author': FilterMenu(label='Author / Origin / Dataset'),
+                'metadata': FilterMenu(label='Visibility / IDs / Schema'),
             }
         ),
         filters=Filters(
