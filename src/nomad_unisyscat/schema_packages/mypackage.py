@@ -283,7 +283,7 @@ class EPR(Measurement, Schema, PlotSection):
 
             if self.dsc_file.endswith('_EPR_exp_raw.DSC'):
                 sample_name = self.dsc_file.split('_EPR')[0]
-            self.method = 'experimental EPR spectroscopy'
+            # self.method = 'experimental EPR spectroscopy'
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
                 sample.name = sample_name
@@ -363,6 +363,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
+        default='NRVSpectroscopy',
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
             props=dict(

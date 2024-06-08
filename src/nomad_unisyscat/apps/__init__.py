@@ -43,7 +43,7 @@ myapp = AppEntryPoint(
             }
         ),
         filters=Filters(
-            include=['*#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy'],
+            include=['*#nomad_unisyscat.schema_packages.mypackage.*'],
         ),
         # dashboard={
         #     'widgets': [
