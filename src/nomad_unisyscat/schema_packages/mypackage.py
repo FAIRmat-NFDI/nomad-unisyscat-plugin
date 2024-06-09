@@ -283,7 +283,7 @@ class EPR(Measurement, Schema, PlotSection):
 
             if self.dsc_file.endswith('_EPR_exp_raw.DSC'):
                 sample_name = self.dsc_file.split('_EPR')[0]
-            self.method = 'experimental EPR spectroscopy'
+            # self.method = 'experimental EPR spectroscopy'
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
                 sample.name = sample_name
@@ -300,6 +300,7 @@ class EPR(Measurement, Schema, PlotSection):
                 instrument = InstrumentReference()
                 instrument.name = 'EPR spectrometer'
                 instrument.lab_id = 'EPR-spectrometer'
+                from nomad.datamodel.context import ClientContext
                 if isinstance(archive.m_context, ClientContext):
                     pass
                 else:
@@ -362,6 +363,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
+        default='NRVSpectroscopy',
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
             props=dict(
@@ -422,14 +424,18 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 samples.append(sample)
                 self.samples = samples
             self.method = 'experimental nuclear resonance vibrational spectroscopy'
-            if self.instrument is None or self.instrument == []:
+            if self.instruments is None or self.instruments == []:
                 instrument = InstrumentReference()
                 instrument.name = 'NRVS setup'
                 instrument.lab_id = 'NRVS-setup'
+                from nomad.datamodel.context import ClientContext
                 if isinstance(archive.m_context, ClientContext):
                     pass
                 else:
                     instrument.normalize(archive, logger)
+                instruments = []
+                instruments.append(instrument)
+                self.instruments = instruments
 
 
 class IRResult(MeasurementResult):
@@ -534,6 +540,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
                 instrument = InstrumentReference()
                 instrument.name = 'FT-IR spectrometer'
                 instrument.lab_id = 'FT-IR-spectrometer'
+                from nomad.datamodel.context import ClientContext
                 if isinstance(archive.m_context, ClientContext):
                     pass
                 else:
