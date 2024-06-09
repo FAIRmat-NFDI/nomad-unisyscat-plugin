@@ -18,8 +18,8 @@ myapp = AppEntryPoint(
         columns=Columns(
             selected=[
                 'entry_name',
-                'data.name#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy',
-                'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy'
+                'results.eln.lab_ids',
+                'data.method#nomad_unisyscat.schema_packages.mypackage.NRVSpectroscopy',
             ],
             options={
                 'entry_name': Column(),
@@ -33,7 +33,6 @@ myapp = AppEntryPoint(
                     Column(),
                 'authors.name': Column(),
                 'results.method.simulation.program_name': Column(),
-                'results.method.simulation.xc_functional_type': Column(),
             },
         ),
 
@@ -139,7 +138,7 @@ myapp = AppEntryPoint(
                         'xxl': {
                             'minH': 3,
                             'minW': 3,
-                            'h': 9,
+                            'h': 5,
                             'w': 6,
                             'y': 0,
                             'x': 12,
@@ -147,7 +146,7 @@ myapp = AppEntryPoint(
                         'xl': {
                             'minH': 3,
                             'minW': 3,
-                            'h': 9,
+                            'h': 5,
                             'w': 6,
                             'y': 0,
                             'x': 12,
@@ -179,7 +178,7 @@ myapp = AppEntryPoint(
                         'xxl': {
                             'minH': 3,
                             'minW': 3,
-                            'h': 9,
+                            'h': 5,
                             'w': 6,
                             'y': 0,
                             'x': 18,
@@ -187,7 +186,7 @@ myapp = AppEntryPoint(
                         'xl': {
                             'minH': 3,
                             'minW': 3,
-                            'h': 9,
+                            'h': 5,
                             'w': 6,
                             'y': 0,
                             'x': 18,
