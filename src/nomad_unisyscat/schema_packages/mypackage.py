@@ -363,7 +363,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
-        default='NRVSpectroscopy',
+        default='Nuclear resonance vibrational spectroscopy (NRVS)',
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
             props=dict(
@@ -436,6 +436,22 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 instruments = []
                 instruments.append(instrument)
                 self.instruments = instruments
+        elif self.measurement_data_file.endswith('_NRVS_sim.dat'):
+            file_name = str(self.measurement_data_file)
+            sample_name = file_name.split('_NRVS')
+            if self.samples is None or self.samples == []:
+                sample = CompositeSystemReference()
+                sample.name = sample_name[0]
+                sample.lab_id = sample_name[0]
+                from nomad.datamodel.context import ClientContext
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    sample.normalize(archive, logger)
+                samples = []
+                samples.append(sample)
+                self.samples = samples
+            self.method = 'simulated nuclear resonance vibrational spectroscopy'
 
 
 class IRResult(MeasurementResult):
@@ -482,9 +498,9 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
+        default='Infra-red (IR)',
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
-            default='infra red vibrational spectroscopy',
             props=dict(
                 suggestions=[
                     'experimental IR vibrational spectroscopy',
@@ -523,7 +539,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
 
         if self.data_file.endswith('_IR_exp.dat'):
             sample_name = self.data_file.split('_IR')[0]
-            self.method = 'experimental IR vibrational spectroscopy'
+            self.method = 'experimental infra-red spectroscopy'
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
                 sample.name = sample_name
