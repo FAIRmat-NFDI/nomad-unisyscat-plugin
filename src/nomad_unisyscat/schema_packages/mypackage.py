@@ -283,7 +283,7 @@ class EPR(Measurement, Schema, PlotSection):
 
             if self.dsc_file.endswith('_EPR_exp_raw.DSC'):
                 sample_name = self.dsc_file.split('_EPR')[0]
-            # self.method = 'experimental EPR spectroscopy'
+                self.method = 'experimental EPR spectroscopy'
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
                 sample.name = sample_name
@@ -363,7 +363,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
-        default='NRVSpectroscopy',
+        default='Nuclear resonance vibrational spectroscopy (NRVS)',
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
             props=dict(
@@ -394,22 +394,16 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
 
                 col_names = ['wavenumber, cm-1', '57Fe PVDOS']
                 data = pd.read_csv(f.name, header=None, names=col_names)
-        result = NRVSResult()
-        result.wavenumber = data['wavenumber, cm-1']
-        result.intensity = data['57Fe PVDOS']
-        results = []
-        results.append(result)
-        self.results = results
 
-        self.figures = []
+            result = NRVSResult()
+            result.wavenumber = data['wavenumber, cm-1']
+            result.intensity = data['57Fe PVDOS']
+            results = []
+            results.append(result)
+            self.results = results
 
-        fig = px.line(x=data['wavenumber, cm-1'], y=data['57Fe PVDOS'])
-        fig.update_xaxes(title_text=col_names[0])
-        fig.update_yaxes(title_text=col_names[1])
-        self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
-
-        if self.measurement_data_file.endswith('_NRVS_exp.dat'):
             file_name = str(self.measurement_data_file)
+
             sample_name = file_name.split('_NRVS')
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
@@ -423,19 +417,30 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 samples = []
                 samples.append(sample)
                 self.samples = samples
-            self.method = 'experimental nuclear resonance vibrational spectroscopy'
-            if self.instruments is None or self.instruments == []:
-                instrument = InstrumentReference()
-                instrument.name = 'NRVS setup'
-                instrument.lab_id = 'NRVS-setup'
-                from nomad.datamodel.context import ClientContext
-                if isinstance(archive.m_context, ClientContext):
-                    pass
-                else:
-                    instrument.normalize(archive, logger)
-                instruments = []
-                instruments.append(instrument)
-                self.instruments = instruments
+
+            if self.measurement_data_file.endswith('_NRVS_exp.dat'):
+                self.method = 'experimental nuclear resonance vibrational spectroscopy'
+                if self.instruments is None or self.instruments == []:
+                    instrument = InstrumentReference()
+                    instrument.name = 'NRVS setup'
+                    instrument.lab_id = 'NRVS-setup'
+                    from nomad.datamodel.context import ClientContext
+                    if isinstance(archive.m_context, ClientContext):
+                        pass
+                    else:
+                        instrument.normalize(archive, logger)
+                    instruments = []
+                    instruments.append(instrument)
+                    self.instruments = instruments
+            elif self.measurement_data_file.endswith('_NRVS_sim.dat'):
+                self.method = 'simulated nuclear resonance vibrational spectroscopy'
+
+        self.figures = []
+
+        fig = px.line(x=data['wavenumber, cm-1'], y=data['57Fe PVDOS'])
+        fig.update_xaxes(title_text=col_names[0])
+        fig.update_yaxes(title_text=col_names[1])
+        self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
 
 
 class IRResult(MeasurementResult):
@@ -482,9 +487,9 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
         description="""
             name of the method
             """,
+        default='Infra-red (IR)',
         a_eln=ELNAnnotation(
             component='StringEditQuantity',
-            default='infra red vibrational spectroscopy',
             props=dict(
                 suggestions=[
                     'experimental IR vibrational spectroscopy',
@@ -523,7 +528,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
 
         if self.data_file.endswith('_IR_exp.dat'):
             sample_name = self.data_file.split('_IR')[0]
-            self.method = 'experimental IR vibrational spectroscopy'
+            self.method = 'experimental infra-red spectroscopy'
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
                 sample.name = sample_name
