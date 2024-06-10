@@ -209,7 +209,99 @@ myapp = AppEntryPoint(
                             'x': 6,
                         },
                     },
-                }
+                },
+                {
+                    'type': 'histogram',
+                    'showinput': 'true',
+                    'autorange': 'true',
+                    'nbins': 30,
+                    'scale': 'linear',
+                    'quantity': 'entry_create_time',
+                    'layout': {
+                        'xxl': {
+                            'minH': 3,
+                            'minW': 3,
+                            'h': 6,
+                            'w': 12,
+                            'y': 5,
+                            'x': 0,
+                        },
+                        'xl': {
+                            'minH': 3,
+                            'minW': 3,
+                            'h': 5,
+                            'w': 12,
+                            'y': 5,
+                            'x': 0,
+                        },
+                        'lg': {'minH': 3, 'minW': 3, 'h': 5, 'w': 12, 'y': 5, 'x': 0},
+                        'md': {
+                            'minH': 3,
+                            'minW': 3,
+                            'h': 5,
+                            'w': 12,
+                            'y': 8,
+                            'x': 0,
+                        },
+                        'sm': {
+                            'minH': 3,
+                            'minW': 3,
+                            'h': 5,
+                            'w': 12,
+                            'y': 8,
+                            'x': 0,
+                        },
+                    },
+                },
+                # {
+                #     'type': 'scatterplot',
+                #     'autorange': 'true',
+                #     'size': 1000,
+                #     'scale': 'linear',
+                #     'y':
+                #         'quantity': 'data.results[0].frequency'
+                #             '#nomad_unisyscat.schema_packages.mypackage.EPR',
+                #     'x':
+                #         'quantity': 'data.results[0].signal'
+                #             '#nomad_unisyscat.schema_packages.mypackage.EPR',
+                #     'layout': {
+                #         'xxl': {
+                #             'minH': 3,
+                #             'minW': 3,
+                #             'h': 6,
+                #             'w': 12,
+                #             'y': 5,
+                #             'x': 12,
+                #         },
+                #         'xl': {
+                #             'minH': 3,
+                #             'minW': 3,
+                #             'h': 5,
+                #             'w': 12,
+                #             'y': 5,
+                #             'x': 12,
+                #         },
+                #         'lg': {
+                #             'minH': 3, 'minW': 3,
+                #             'h': 5, 'w': 12, 'y': 5, 'x': 12},
+                #         'md': {
+                #             'minH': 3,
+                #             'minW': 3,
+                #             'h': 6,
+                #             'w': 12,
+                #             'y': 10,
+                #             'x': 0,
+                #         },
+                #         'sm': {
+                #             'minH': 3,
+                #             'minW': 3,
+                #             'h': 6,
+                #             'w': 12,
+                #             'y': 13,
+                #             'x': 0,
+                #         },
+                #     },
+                # }
             ],
         }
     ),
