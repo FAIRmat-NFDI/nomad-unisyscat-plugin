@@ -1,15 +1,13 @@
 # How to Use This Plugin
 
-This plugin can be used in a NOMAD Oasis installation.
+This plugin can be used in a NOMAD Oasis installation. Check the tips in [Install this plugin](install_this_plugin.md) for details.
 
-## Add This Plugin to Your NOMAD installation
-
-Read the [NOMAD plugin documentation](https://nomad-lab.eu/prod/v1/staging/docs/plugins/plugins.html#add-a-plugin-to-your-nomad) for all details on how to deploy the plugin on your NOMAD instance.
+Once the Oasis is deployed, you can generate different entries as shown below.
 
 ## Add new sample entries
 <iframe src="https://scribehow.com/embed/Upload_custom_data_entry_with_specific_schema_in_NOMAD_Oasis__mRg47mlZSpOSQ5G_HFlq7A" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-## Add instrument data entry
+## Add instrument entry
 <iframe src="https://scribehow.com/embed/Create_a_Custom_Instrument_Schema_in_Nomad_Oasis__-RkLffMjT22hj9BAipE1KQ" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
 ## Add measurement entry
@@ -22,6 +20,7 @@ Read the [NOMAD plugin documentation](https://nomad-lab.eu/prod/v1/staging/docs/
 
 ## run a jupyter notebook to visualize the pdb file
 
+!!! Attention:
 TODO: how to connect the NORTH Tools to a local Oasis instance.
 
 ## User management
@@ -30,3 +29,5 @@ TODO: how to connect the NORTH Tools to a local Oasis instance.
 
 ## Use the dedicated UniSysCat Explore App to get an overview and find entries
 
+!!! Attention:
+TODO add introduction of App
