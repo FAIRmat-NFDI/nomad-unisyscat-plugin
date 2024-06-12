@@ -6,5 +6,27 @@ This plugin can be used in a NOMAD Oasis installation.
 
 Read the [NOMAD plugin documentation](https://nomad-lab.eu/prod/v1/staging/docs/plugins/plugins.html#add-a-plugin-to-your-nomad) for all details on how to deploy the plugin on your NOMAD instance.
 
-!!! note "Attention"
-    TODO
+## Add new sample entries
+<iframe src="https://scribehow.com/embed/Upload_custom_data_entry_with_specific_schema_in_NOMAD_Oasis__mRg47mlZSpOSQ5G_HFlq7A" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
+## Add instrument data entry
+<iframe src="https://scribehow.com/embed/Create_a_Custom_Instrument_Schema_in_Nomad_Oasis__-RkLffMjT22hj9BAipE1KQ" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
+## Add measurement entry
+
+<iframe src="https://scribehow.com/embed/Create_a_Measurement_Upload_in_NOMAD_Oasis__xqwktvKPQUSPK8aT0E-58A" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
+## Upload gaussian DFT
+
+<iframe src="https://scribehow.com/embed/Upload_DFT_Files_Using_Nomad_Oasis_Interface__qdOffE1DSnSuvKsjP8dwZw" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
+## run a jupyter notebook to visualize the pdb file
+
+TODO: how to connect the NORTH Tools to a local Oasis instance.
+
+## User management
+
+<iframe src="https://scribehow.com/embed/Add_Users_to_a_Nomad_Oasis_Upload__hGhkAMCATXWdHGjeleDB0A" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
+## Use the dedicated UniSysCat Explore App to get an overview and find entries
+
