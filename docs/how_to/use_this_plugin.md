@@ -20,8 +20,7 @@ Once the Oasis is deployed, you can generate different entries as shown below.
 
 ## run a jupyter notebook to visualize the pdb file
 
-!!! Attention:
-TODO: how to connect the NORTH Tools to a local Oasis instance.
+<iframe src="https://scribehow.com/embed/Visualizing_pdb_files_through_NOMAD_Remote_Tools_Hub__IdryIk1lRpaDI8TQm6ajbg" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
 ## User management
 
