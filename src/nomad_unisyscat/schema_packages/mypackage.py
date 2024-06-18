@@ -348,7 +348,7 @@ class NRVSResult(MeasurementResult):
 
 
 class NRVSpectroscopy(Measurement, PlotSection, Schema):
-    measurement_data_file = Quantity(
+    data_file = Quantity(
         type=str,
         description="""
             experimental tab data file
@@ -378,16 +378,16 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
 
     def normalize(self, archive, logger):
         super().normalize(archive, logger)
-        if self.measurement_data_file is None:
+        if self.data_file is None:
             return
 
-        if (self.measurement_data_file is not None) and (
-            os.path.splitext(self.measurement_data_file)[-1] != '.dat'
+        if (self.data_file is not None) and (
+            os.path.splitext(self.data_file)[-1] != '.dat'
         ):
             raise ValueError('Unsupported file format. Only .dat file')
 
-        if self.measurement_data_file.endswith('.dat'):
-            with archive.m_context.raw_file(self.measurement_data_file) as f:
+        if self.data_file.endswith('.dat'):
+            with archive.m_context.raw_file(self.data_file) as f:
                 import pandas as pd
 
                 col_names = ['wavenumber, cm-1', '57Fe PVDOS']
@@ -406,8 +406,8 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
 
-        if self.measurement_data_file.endswith('_NRVS_exp.dat'):
-            file_name = str(self.measurement_data_file)
+        if self.data_file.endswith('_NRVS_exp.dat'):
+            file_name = str(self.data_file)
             sample_name = file_name.split('_NRVS')
             if self.samples is None or self.samples == []:
                 sample = CompositeSystemReference()
