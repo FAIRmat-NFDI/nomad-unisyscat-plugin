@@ -4,11 +4,6 @@ from typing import (
 )
 
 import numpy as np
-from nomad.metainfo.metainfo import SubSection
-
-if TYPE_CHECKING:
-    pass
-
 import plotly.express as px
 from nomad.config import config
 from nomad.datamodel.data import ArchiveSection, Schema
@@ -21,12 +16,21 @@ from nomad.datamodel.metainfo.basesections import (
 )
 from nomad.datamodel.metainfo.eln import ELNSample
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
-from nomad.metainfo.util import MEnum
 from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section
+from nomad.metainfo.metainfo import SubSection
+from nomad.metainfo.util import MEnum
 
 configuration = config.get_plugin_entry_point(
     'nomad_unisyscat.schema_packages:mypackage'
 )
+
+if TYPE_CHECKING:
+    from nomad.datamodel.datamodel import (
+        EntryArchive,
+    )
+    from structlog.stdlib import (
+        BoundLogger,
+    )
 
 m_package = SchemaPackage()
 
