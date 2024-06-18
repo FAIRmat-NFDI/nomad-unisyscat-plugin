@@ -36,9 +36,9 @@ class UniSysCatExampleSample(ELNSample, Schema):
     m_def = Section(
         a_eln={
             "hide": [
-                "chemical_formula",
+                #"chemical_formula",
                 "description",
-                "datetime"
+                #"datetime"
             ]
         },)
     creation_time = Quantity(
