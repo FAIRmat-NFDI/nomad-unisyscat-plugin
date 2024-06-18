@@ -21,7 +21,8 @@ from nomad.datamodel.metainfo.basesections import (
 )
 from nomad.datamodel.metainfo.eln import ELNSample
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
-from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section,
+from nomad.metainfo.util import MEnum
+from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section
 
 configuration = config.get_plugin_entry_point(
     'nomad_unisyscat.schema_packages:mypackage'
@@ -36,13 +37,13 @@ class UniSysCatExampleSample(ELNSample, Schema):
     m_def = Section(
         a_eln={
             "hide": [
-                #"chemical_formula",
+                "chemical_formula",
                 "description",
-                #"datetime"
+                "datetime"
             ]
         },)
     creation_time = Quantity(
-        type='Datetime',
+        type=Datetime,
         a_eln={
             "component": "DateTimeEditQuantity"
         },
