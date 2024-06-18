@@ -2,7 +2,7 @@ import os
 from typing import (
     TYPE_CHECKING,
 )
-
+import datetime
 import numpy as np
 from nomad.metainfo.metainfo import SubSection
 
@@ -42,7 +42,7 @@ class UniSysCatExampleSample(ELNSample, Schema):
             ]
         },)
     creation_time = Quantity(
-        type=Datetime,
+        type='Datetime',
         a_eln={
             "component": "DateTimeEditQuantity"
         },
