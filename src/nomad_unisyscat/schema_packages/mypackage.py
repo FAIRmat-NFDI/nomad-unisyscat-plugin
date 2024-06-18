@@ -2,7 +2,7 @@ import os
 from typing import (
     TYPE_CHECKING,
 )
-import datetime
+
 import numpy as np
 from nomad.metainfo.metainfo import SubSection
 
@@ -21,7 +21,7 @@ from nomad.datamodel.metainfo.basesections import (
 )
 from nomad.datamodel.metainfo.eln import ELNSample
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
-from nomad.metainfo import Quantity, SchemaPackage, Section
+from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section,
 
 configuration = config.get_plugin_entry_point(
     'nomad_unisyscat.schema_packages:mypackage'
