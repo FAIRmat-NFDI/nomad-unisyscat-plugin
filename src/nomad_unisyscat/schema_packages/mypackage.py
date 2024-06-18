@@ -481,22 +481,21 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
                 samples.append(sample)
                 self.samples = samples
 
-            if self.measurement_data_file.endswith('_NRVS_exp.dat'):
-                self.method = 'experimental nuclear resonance vibrational spectroscopy'
-                if self.instruments is None or self.instruments == []:
-                    instrument = InstrumentReference()
-                    instrument.name = 'NRVS setup'
-                    instrument.lab_id = 'NRVS-setup'
-                    from nomad.datamodel.context import ClientContext
-                    if isinstance(archive.m_context, ClientContext):
-                        pass
-                    else:
-                        instrument.normalize(archive, logger)
-                    instruments = []
-                    instruments.append(instrument)
-                    self.instruments = instruments
-            elif self.measurement_data_file.endswith('_NRVS_sim.dat'):
-                self.method = 'simulated nuclear resonance vibrational spectroscopy'
+            self.method = 'experimental nuclear resonance vibrational spectroscopy'
+            if self.instruments is None or self.instruments == []:
+                instrument = InstrumentReference()
+                instrument.name = 'NRVS setup'
+                instrument.lab_id = 'NRVS-setup'
+                from nomad.datamodel.context import ClientContext
+                if isinstance(archive.m_context, ClientContext):
+                    pass
+                else:
+                    instrument.normalize(archive, logger)
+                instruments = []
+                instruments.append(instrument)
+                self.instruments = instruments
+        elif self.data_file.endswith('_NRVS_sim.dat'):
+            self.method = 'simulated nuclear resonance vibrational spectroscopy'
 
         self.figures = []
 
