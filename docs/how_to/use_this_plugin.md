@@ -28,5 +28,4 @@ Once the Oasis is deployed, you can generate different entries as shown below.
 
 ## Use the dedicated UniSysCat Explore App to get an overview and find entries
 
-!!! Attention:
-TODO add introduction of App
+<iframe src="https://scribehow.com/embed/Entry_Overview_and_Search_in_the_UniSysCatApp__NjapCJVCRpWOwL_diCv5eQ" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
