@@ -1,10 +1,9 @@
 # References
 
-!!! note "Attention"
-    TODO
+!!! note "**List of ELN Schemas from this Plugin**"
 
-!!! note "List of (Entry Data type) Schemas from the Plugin"
-    EPR
-    IRSpectroscopy
-    NRVSpectroscopy
+    - UniSysCatExampleSample
+    - EPR
+    - IRSpectroscopy
+    - NRVSpectroscopy
 
