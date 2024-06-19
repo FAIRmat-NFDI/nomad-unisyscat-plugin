@@ -4,5 +4,9 @@ To install this plugin follow [part 4 of the FAIRmat tutorial 13](https://github
 
 
 If you already have a NOMAD Oasis, you just need to add the line
-`git+https://github.com/FAIRmat-NFDI/nomad-unisyscat-plugin.git@main` to the plugin.txt in your NOMAD Oasis repositorium.
+
+```sh
+git+https://github.com/FAIRmat-NFDI/nomad-unisyscat-plugin.git@main
+```
+to the plugin.txt in your NOMAD Oasis repositorium.
 
