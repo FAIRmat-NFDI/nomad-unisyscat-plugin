@@ -379,6 +379,7 @@ class EPR(Measurement, Schema, PlotSection):
             fig.update_yaxes(title_text='Intensity')
             self.figures.append(PlotlyFigure(label='EPR', figure=fig.to_plotly_json()))
 
+        super().normalize(archive, logger)
         logger.info('EPR.normalize', parameter=configuration.parameter)
 
 
@@ -442,7 +443,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
     results.section_def = NRVSResult
 
     def normalize(self, archive, logger):
-        super().normalize(archive, logger)
+
         if self.data_file is None:
             return
 
@@ -504,6 +505,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='NRVS', figure=fig.to_plotly_json()))
 
+        super().normalize(archive, logger)
 
 class IRResult(MeasurementResult):
     m_def = Section()
@@ -565,7 +567,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
     results.section_def = IRResult
 
     def normalize(self, archive, logger):
-        super().normalize(archive, logger)
+
         if self.data_file is None:
             return
 
@@ -623,5 +625,6 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
         fig.update_yaxes(title_text=col_names[1])
         self.figures.append(PlotlyFigure(label='IR', figure=fig.to_plotly_json()))
 
+        super().normalize(archive, logger)
 
 m_package.__init_metainfo__()
