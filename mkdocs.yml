@@ -1,8 +1,8 @@
 site_name: nomad-unisyscat
 site_description: A example plugin for a demonstration for UniSysCat.
-site_author: Pepe Marquez
+site_author: Julia Schumann, Ahmed Mansour and Pepe Marquez
 
-repo_url: https://github.com/Pepe-Marquez/nomad-unisyscat
+repo_url: https://github.com/FAIRmat-NFDI/nomad-unisyscat-plugin
 
 nav:
   - Home: index.md
