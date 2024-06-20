@@ -14,38 +14,38 @@ This example demonstrates how NOMAD effectively manages diverse research data, p
 The dataset used in this demonstration originates from a paper by C. Lorent *et al.*
 [(Angew. Chem. Int. Ed. 2021, 60, 15854–15862)](doi.org/10.1002/anie.202100451).
 
-The paper introduces an innovative experimental setup for spectroscopic analyses of gas-converting metalloenzymes. It allows for adjustments in gas composition and temperature, enabling the preparation of specific redox states for characterization using complementary spectroscopic tools such as IR, EPR, or NRVS.
+The paper introduces an innovative experimental setup for spectroscopic analyses of gas-converting metalloenzymes. It allows for adjustments in gas composition and temperature, enabling the preparation of specific redox states for characterization using complementary spectroscopic tools such as **IR**, **EPR**, or **NRVS**.
 
 ![Alt text](images/TOC%20figure%20from%20paper.png)
 
 
 This NOMAD Oasis demonstration illustrates the Research Data Management (RDM) of experiments focusing on the regulatory [NiFe]-hydrogenase from Ralstonia eutropha (ReRH). The experiments involve preparing the catalytic intermediate (Ni<sub>a</sub>-C) using highly concentrated lyophilized samples of ReRH treated either in H<sub>2</sub> or D<sub>2</sub>, followed by characterizing the sample via IR, Raman spectroscopy (RR), and Nuclear Resonance Vibrational Spectroscopy (NRVS). Additionally, it includes the calculation of vibrational frequencies.
 
-The demonstration covers creating entries for different parts of the experiment, uploading raw data files from measurements and calculations, visualizing them in NOMAD, and demonstrating how different project members can collaborate.
+The demonstration covers creating entries for different parts of the experiment, uploading raw data files from measurements and calculations, visualizing them in NOMAD, launching analysis tools like Jupyter notebooks with the files in NOMAD, and demonstrating how different project members can collaborate.
 
 
 ### **Supported Entry Types**
 In this demonstration, NOMAD supports multiple entry types, including:
 
 1. **Experimental Data:**
-- Tabular data files with the .dat file format.
-- Binary data files with the .DSC file format.
-- Electronic Lab Notebook (ELN) entries for samples, instruments, and processing, based on the NOMAD schema.
+- Tabular data files with the `.dat` file format.
+- Binary data files with the `.DSC` file format.
+- Electronic Lab Notebook (ELN) entries for samples, instruments, and processes, based on NOMAD basic sections.
 
 
-2. **Computational data:**
-- Output files from Density Functional Theory (DFT) calculations based on the Gaussian 09 package.
+1. **Computational data:**
+- Output files from Density Functional Theory (DFT) calculations based on the ``Gaussian 09`` package.
 
-### **Research Data:**
+### **Research Data**
 
-The data used in this NOMAD Oasis demonstration come from various sources, ensuring a comprehensive representation of the types of entries NOMAD can manage. The primary sources include:
+The data used in this NOMAD Oasis demonstration come from various sources, ensuring a comprehensive representation of the types of entries NOMAD can handle. The primary sources include:
 
-- In-situ Infrared (IR) spectroscopy for ReRH_Ni<sub>a</sub>-C_H.
-- <sup>57</sup>Fe nuclear resonance vibrational spectroscopy (NRVS), both measured and simulated, for ReRH_Ni<sub>a</sub>-C_H and ReRH_Ni<sub>a</sub>-C_D.
-- Electron paramagnetic spectroscopy (EPR) for ReRH_Ni<sub>a</sub>-C_H.
-- Density functional theory (DFT) calculations using the Gaussian package for ReRH_Ni<sub>a</sub>-C_H and ReRH_Ni<sub>a</sub>-C_D.
+- **In-situ Infrared (IR) spectroscopy** for ``ReRH_Ni<sub>a</sub>-C_H``.
+- <sup>57</sup>Fe **nuclear resonance vibrational spectroscopy (NRVS)**, both measured and simulated, for ``ReRH_Ni<sub>a</sub>-C_H`` and ``ReRH_Ni<sub>a</sub>-C_D``.
+- **Electron paramagnetic spectroscopy (EPR)** for ``ReRH_Ni<sub>a</sub>-C_H``.
+- **Density functional theory (DFT)** calculations using the **Gaussian** package for ``ReRH_Ni<sub>a</sub>-C_H`` and ``ReRH_Ni<sub>a</sub>-C_D``.
 
-By exploring this demonstration, users will gain a clearer understanding of how NOMAD can streamline research data management processes, enhance data quality, and foster collaboration across UniSysCat.
+By exploring this demonstration, users will gain a clearer understanding of how NOMAD can streamline research data management processes, enhance and organize the data, and foster collaboration across UniSysCat.
 
 
 <div markdown="block" class="home-grid">
@@ -65,8 +65,7 @@ How-to guides provide step-by-step instructions for a wide range of tasks, with 
 
 ### Reference
 
-The reference [section](reference/references.md) includes all CLI commands and arguments, all configuration options,
-the possible schema annotations and their arguments, and a glossary of used terms.
+The reference [section](reference/references.md) includes a list fo the measurements supported by this plugin.
 
 </div>
 </div>

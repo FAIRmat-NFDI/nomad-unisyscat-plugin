@@ -2,9 +2,9 @@
 
 This plugin can be used in a NOMAD Oasis installation. Check the tips in [Install this plugin](install_this_plugin.md) for details.
 
-Once the Oasis is deployed, you can generate different entries as shown below.
+Once the NOMAD Oasis is deployed, you can generate different entries as shown below.
 
-## Add new sample entries
+## Create new sample entries
 <iframe src="https://scribehow.com/embed/Upload_custom_data_entry_with_specific_schema_in_NOMAD_Oasis__mRg47mlZSpOSQ5G_HFlq7A" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
 ## Add instrument entry
@@ -18,7 +18,7 @@ Once the Oasis is deployed, you can generate different entries as shown below.
 
 <iframe src="https://scribehow.com/embed/Upload_DFT_Files_Using_Nomad_Oasis_Interface__qdOffE1DSnSuvKsjP8dwZw" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
-## run a jupyter notebook to visualize the pdb file
+## Run a jupyter notebook to visualize the `.pdb` file
 
 <iframe src="https://scribehow.com/embed/Visualizing_pdb_files_through_NOMAD_Remote_Tools_Hub__IdryIk1lRpaDI8TQm6ajbg" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
