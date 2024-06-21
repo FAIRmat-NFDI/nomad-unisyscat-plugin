@@ -14,7 +14,7 @@ from nomad.datamodel.metainfo.basesections import (
     Measurement,
     MeasurementResult,
 )
-from nomad.datamodel.metainfo.eln import ELNSample
+from nomad.datamodel.metainfo.eln import ELNSample, ELNInstrument
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section
 from nomad.metainfo.metainfo import SubSection
@@ -90,6 +90,10 @@ class UniSysCatExampleSample(ELNSample, Schema):
             logger (BoundLogger): A structlog logger.
         '''
         super().normalize(archive, logger)
+
+
+class UniSysCatInstrument(ELNInstrument):
+    pass
 
 
 class EPRSettings(ArchiveSection):
