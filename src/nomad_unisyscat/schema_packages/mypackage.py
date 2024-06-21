@@ -16,7 +16,6 @@ from nomad.datamodel.metainfo.basesections import (
     Measurement,
     MeasurementResult,
 )
-
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section
 from nomad.metainfo.metainfo import Category, MCategory, SubSection
@@ -50,7 +49,7 @@ class UniSysCatSample(CompositeSystem, Schema):
         label='Sample',
         categories=[UniSysCatElnCategory],)
 
-    creation_time = Quantity(
+    datetime = Quantity(
         type=Datetime,
         a_eln=dict(
             component= 'DateTimeEditQuantity', label='creation time'
