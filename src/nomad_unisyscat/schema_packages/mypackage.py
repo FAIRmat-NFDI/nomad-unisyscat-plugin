@@ -187,6 +187,10 @@ class EPRResults(MeasurementResult):
 
 
 class EPR(Measurement, Schema, PlotSection):
+    m_def = Section(
+        label = 'EPR measurement entry',
+        categories=[UniSysCatElnCategory]
+    )
     method = Quantity(
         type=str,
         description='The method of the measurement.',
