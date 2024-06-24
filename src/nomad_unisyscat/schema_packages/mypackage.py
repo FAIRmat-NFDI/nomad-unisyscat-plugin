@@ -468,8 +468,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
             return
 
         if (self.data_file is not None) and (
-            os.path.splitext(self.data_file)[-1] != '.dat'
-        ):
+            os.path.splitext(self.data_file)[-1] != '.dat'):
             raise ValueError('Unsupported file format. Only .dat file')
 
         if self.data_file.endswith('.dat'):
@@ -486,40 +485,38 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
             results.append(result)
             self.results = results
 
-        if self.data_file.endswith('_NRVS_exp.dat'):
-            file_name = str(self.data_file)
-            sample_name = file_name.split('_NRVS')
-            if self.samples is None or self.samples == []:
-                sample = CompositeSystemReference()
-                sample.name = sample_name[0]
-                sample.lab_id = sample_name[0]
-                from nomad.datamodel.context import ClientContext
-                if isinstance(archive.m_context, ClientContext):
-                    pass
-                else:
-                    sample.normalize(archive, logger)
-                samples = []
-                samples.append(sample)
-                self.samples = samples
+            if self.data_file.endswith('_NRVS_exp.dat'):
+                sample_name = str(self.data_file).split('_NRVS')
+                if self.samples is None or self.samples == []:
+                    sample = CompositeSystemReference()
+                    sample.name = sample_name[0]
+                    sample.lab_id = sample_name[0]
+                    from nomad.datamodel.context import ClientContext
+                    if isinstance(archive.m_context, ClientContext):
+                        pass
+                    else:
+                        sample.normalize(archive, logger)
+                    samples = []
+                    samples.append(sample)
+                    self.samples = samples
 
-            self.method = 'experimental nuclear resonance vibrational spectroscopy'
-            if self.instruments is None or self.instruments == []:
-                instrument = InstrumentReference()
-                instrument.name = 'NRVS setup'
-                instrument.lab_id = 'NRVS-setup'
-                from nomad.datamodel.context import ClientContext
-                if isinstance(archive.m_context, ClientContext):
-                    pass
-                else:
-                    instrument.normalize(archive, logger)
-                instruments = []
-                instruments.append(instrument)
-                self.instruments = instruments
-        elif self.data_file.endswith('_NRVS_sim.dat'):
-            self.method = 'simulated nuclear resonance vibrational spectroscopy'
+                self.method = 'experimental nuclear resonance vibrational spectroscopy'
+                if self.instruments is None or self.instruments == []:
+                    instrument = InstrumentReference()
+                    instrument.name = 'NRVS setup'
+                    instrument.lab_id = 'NRVS-setup'
+                    from nomad.datamodel.context import ClientContext
+                    if isinstance(archive.m_context, ClientContext):
+                        pass
+                    else:
+                        instrument.normalize(archive, logger)
+                    instruments = []
+                    instruments.append(instrument)
+                    self.instruments = instruments
+            elif self.data_file.endswith('_NRVS_sim.dat'):
+                self.method = 'simulated nuclear resonance vibrational spectroscopy'
 
         self.figures = []
-
         fig = px.line(x=data['wavenumber, cm-1'], y=data['57Fe PVDOS'])
         fig.update_xaxes(title_text=col_names[0])
         fig.update_yaxes(title_text=col_names[1])
