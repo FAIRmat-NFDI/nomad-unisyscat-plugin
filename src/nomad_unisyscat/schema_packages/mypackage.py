@@ -463,7 +463,7 @@ class NRVSpectroscopy(Measurement, PlotSection, Schema):
     results.section_def = NRVSResult
 
     def normalize(self, archive, logger):
-
+        super().normalize(archive, logger)
         if self.data_file is None:
             return
 
