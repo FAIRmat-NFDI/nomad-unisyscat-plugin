@@ -8,6 +8,8 @@ from nomad.config.models.ui import (
     Filters,
 )
 
+schema = 'nomad_unisyscat.schema_packages.*'
+
 myapp = AppEntryPoint(
     name='UniSysCatApp',
     description='Explore UniSysCat example data.',
@@ -39,6 +41,7 @@ myapp = AppEntryPoint(
         filter_menus=FilterMenus(
             options={
                 'material': FilterMenu(label='Material'),
+                'elements': FilterMenu(label='Elements / Formula', level=1, size='xl'),
                 'eln': FilterMenu(label='Electronic Lab Notebook'),
                 'custom_quantities': FilterMenu(label='User Defined Quantities'),
                 'author': FilterMenu(label='Author / Origin / Dataset'),
@@ -48,6 +51,7 @@ myapp = AppEntryPoint(
         filters=Filters(
             include=['*#nomad_unisyscat.schema_packages.mypackage.*'],
         ),
+        filters_locked={'upload_name': 'UniSysCat Test Data'}, #schema},
         dashboard={
             'widgets': [
                 {
