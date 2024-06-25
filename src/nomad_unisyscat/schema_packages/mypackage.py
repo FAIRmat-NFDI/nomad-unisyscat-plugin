@@ -6,7 +6,7 @@ from typing import (
 import numpy as np
 import plotly.express as px
 from nomad.config import config
-from nomad.datamodel.data import ArchiveSection, Schema
+from nomad.datamodel.data import ArchiveSection, Schema, EntryDataCategory
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.datamodel.metainfo.basesections import (
     CompositeSystem,
@@ -18,7 +18,7 @@ from nomad.datamodel.metainfo.basesections import (
 )
 from nomad.datamodel.metainfo.plot import PlotlyFigure, PlotSection
 from nomad.metainfo import Datetime, Quantity, SchemaPackage, Section
-from nomad.metainfo.metainfo import Category, MCategory, SubSection
+from nomad.metainfo.metainfo import Category, SubSection
 from nomad.metainfo.util import MEnum
 
 configuration = config.get_plugin_entry_point(
@@ -35,8 +35,6 @@ if TYPE_CHECKING:
 
 m_package = SchemaPackage()
 
-class EntryDataCategory(MCategory):
-    pass
 
 class UniSysCatElnCategory(EntryDataCategory):
     m_def = Category(label='UniSysCat', categories=[EntryDataCategory])
