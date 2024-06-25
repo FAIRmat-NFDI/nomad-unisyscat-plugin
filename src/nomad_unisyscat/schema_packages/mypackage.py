@@ -6,7 +6,7 @@ from typing import (
 import numpy as np
 import plotly.express as px
 from nomad.config import config
-from nomad.datamodel.data import ArchiveSection, Schema, EntryDataCategory
+from nomad.datamodel.data import ArchiveSection, EntryDataCategory, Schema
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.datamodel.metainfo.basesections import (
     CompositeSystem,
