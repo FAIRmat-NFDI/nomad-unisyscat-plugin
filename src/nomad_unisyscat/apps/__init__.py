@@ -49,7 +49,7 @@ myapp = AppEntryPoint(
         filters=Filters(
             include=['*#nomad_unisyscat.schema_packages.mypackage.*'],
         ),
-        filters_locked={'upload_name': 'UniSysCat*'},
+        filters_locked={'upload_name': "UniSysCat*"},
         dashboard={
             'widgets': [
                 {
