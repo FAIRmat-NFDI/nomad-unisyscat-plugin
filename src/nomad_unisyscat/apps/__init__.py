@@ -8,6 +8,8 @@ from nomad.config.models.ui import (
     Filters,
 )
 
+upload_name = "UniSysCat*"
+
 myapp = AppEntryPoint(
     name='UniSysCatApp',
     description='Explore UniSysCat example data.',
@@ -49,7 +51,7 @@ myapp = AppEntryPoint(
         filters=Filters(
             include=['*#nomad_unisyscat.schema_packages.mypackage.*'],
         ),
-        filters_locked={'upload_name': "UniSysCat*"},
+        filters_locked={'upload_name': upload_name},
         dashboard={
             'widgets': [
                 {
