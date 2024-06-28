@@ -11,7 +11,6 @@ from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.datamodel.metainfo.basesections import (
     CompositeSystem,
     CompositeSystemReference,
-    Instrument,
     InstrumentReference,
     Measurement,
     MeasurementResult,
@@ -92,14 +91,6 @@ class UniSysCatSample(CompositeSystem, Schema):
             logger (BoundLogger): A structlog logger.
         '''
         super().normalize(archive, logger)
-
-
-class UniSysCatInstrument(Instrument, Schema):
-    m_def = Section(
-        label = 'Instrument entry',
-        categories=[UniSysCatElnCategory]
-    )
-
 
 
 class EPRSettings(ArchiveSection):
@@ -586,7 +577,7 @@ class IRSpectroscopy(Measurement, PlotSection, Schema):
     results.section_def = IRResult
 
     def normalize(self, archive, logger):
-
+        super().normalize(archive, logger)
         if self.data_file is None:
             return
 
