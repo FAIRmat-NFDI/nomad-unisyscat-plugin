@@ -19,16 +19,19 @@ version = "0.1.0"
 readme = "README.rst"
 requires-python = ">=3.9"
 authors = [
+    { name = "Julia Schumann", email = "julia.schumann@physik.hu-berlin.de" },
     { name = "Pepe Marquez", email = "jose.marquez@physik.hu-berlin.de" },
+    { name = "Ahmed Mansour", email = "ahmed.mansour@physik.hu-berlin.de" }
 ]
 maintainers = [
-    { name = "Pepe Marquez", email = "jose.marquez@physik.hu-berlin.de" },
+    { name = "Julia Schumann", email = "julia.schumann@physik.hu-berlin.de" },
+    { name = "Pepe Marquez", email = "jose.marquez@physik.hu-berlin.de" }
 ]
 license = { file = "LICENSE" }
 dependencies = ["nomad-lab>=1.2.2dev578"]
 
 [project.urls]
-Repository = "https://github.com/Pepe-Marquez/nomad-unisyscat"
+Repository = "https://github.com/FAIRmat-NFDI/nomad-unisyscat-plugin"
 
 [project.optional-dependencies]
 dev = ["ruff", "pytest", "structlog"]
