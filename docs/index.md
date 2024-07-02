@@ -19,7 +19,7 @@ The paper introduces an innovative experimental setup for spectroscopic analyses
 ![Alt text](images/TOC%20figure%20from%20paper.png)
 
 
-This NOMAD Oasis demonstration illustrates the Research Data Management (RDM) of experiments focusing on the regulatory [NiFe]-hydrogenase from Ralstonia eutropha (ReRH). The experiments involve preparing the catalytic intermediate (Ni<sub>a</sub>-C) using highly concentrated lyophilized samples of ReRH treated either in H<sub>2</sub> or D<sub>2</sub>, followed by characterizing the sample via IR, Raman spectroscopy (RR), and Nuclear Resonance Vibrational Spectroscopy (NRVS). Additionally, it includes the calculation of vibrational frequencies.
+This NOMAD Oasis demonstration illustrates the Research Data Management (RDM) of experiments focusing on the regulatory [NiFe]-hydrogenase from Ralstonia eutropha (ReRH). The experiments involve preparing the catalytic intermediate (Ni<sub>a</sub>-C) using highly concentrated lyophilized samples of ReRH treated either in H<sub>2</sub> or D<sub>2</sub>, followed by characterizing the sample via IR, Electron paramagnetic resonance (EPR), and Nuclear Resonance Vibrational Spectroscopy (NRVS). Additionally, it includes the calculation of vibrational frequencies.
 
 The demonstration covers creating entries for different parts of the experiment, uploading raw data files from measurements and calculations, visualizing them in NOMAD, launching analysis tools like Jupyter notebooks with the files in NOMAD, and demonstrating how different project members can collaborate.
 
@@ -33,17 +33,17 @@ In this demonstration, NOMAD supports multiple entry types, including:
 - Electronic Lab Notebook (ELN) entries for samples, instruments, and processes, based on NOMAD basic sections.
 
 
-1. **Computational data:**
+2. **Computational data:**
 - Output files from Density Functional Theory (DFT) calculations based on the ``Gaussian 09`` package.
 
 ### **Research Data**
 
 The data used in this NOMAD Oasis demonstration come from various sources, ensuring a comprehensive representation of the types of entries NOMAD can handle. The primary sources include:
 
-- **In-situ Infrared (IR) spectroscopy** for ``ReRH_Ni<sub>a</sub>-C_H``.
-- <sup>57</sup>Fe **nuclear resonance vibrational spectroscopy (NRVS)**, both measured and simulated, for ``ReRH_Ni<sub>a</sub>-C_H`` and ``ReRH_Ni<sub>a</sub>-C_D``.
-- **Electron paramagnetic spectroscopy (EPR)** for ``ReRH_Ni<sub>a</sub>-C_H``.
-- **Density functional theory (DFT)** calculations using the **Gaussian** package for ``ReRH_Ni<sub>a</sub>-C_H`` and ``ReRH_Ni<sub>a</sub>-C_D``.
+- **In-situ Infrared (IR) spectroscopy** for <code>ReRH_Ni<sub>a</sub>-C_H</code>.
+- <sup>57</sup>Fe **nuclear resonance vibrational spectroscopy (NRVS)**, both measured and simulated, for <code>ReRH_Ni<sub>a</sub>-C_H</code> and <code>ReRH_Ni<sub>a</sub>-C_D</code>.
+- **Electron paramagnetic spectroscopy (EPR)** for <code>ReRH_Ni<sub>a</sub>-C_H</code>.
+- **Density functional theory (DFT)** calculations using the **Gaussian** package for <code>ReRH_Ni<sub>a</sub>-C_H</code> and <code>ReRH_Ni<sub>a</sub>-C_D</code>.
 
 By exploring this demonstration, users will gain a clearer understanding of how NOMAD can streamline research data management processes, enhance and organize the data, and foster collaboration across UniSysCat.
 
