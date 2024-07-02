@@ -27,14 +27,13 @@ The demonstration covers creating entries for different parts of the experiment,
 ### **Supported Entry Types**
 In this demonstration, NOMAD supports multiple entry types, including:
 
-1. **Experimental Data:**
+#### **Experimental Data:**
 
 - Tabular data files with the `.dat` file format.
 - Binary data files with the `.DSC` file format.
 - Electronic Lab Notebook (ELN) entries for samples, instruments, and processes, based on NOMAD basic sections.
 
-
-2. **Computational data:**
+#### **Computational data:**
    
 - Output files from Density Functional Theory (DFT) calculations based on the ``Gaussian 09`` package.
 
