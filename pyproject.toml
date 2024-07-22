@@ -115,3 +115,6 @@ myparser = "nomad_unisyscat.parsers:myparser"
 mypackage = "nomad_unisyscat.schema_packages:mypackage"
 
 myapp = "nomad_unisyscat.apps:myapp"
+[tool.cruft]
+# Avoid updating workflow files, this leads to permissions issues
+skip = [".github/*"]
